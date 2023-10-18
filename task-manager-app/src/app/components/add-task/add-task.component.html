@@ -1,0 +1,27 @@
+
+<form [formGroup]="addTaskForm" class="p-fluid" (ngSubmit)="saveTask()">
+    <input name="user" type="hidden" pInputText [(ngModel)]="task.user" formControlName="User"  />
+    <div class="p-field">
+      <label for="taskName">Task Name</label>
+      <input id="taskName" type="text" pInputText [(ngModel)]="task.taskName" formControlName="TaskName" />
+
+      <p-message severity="error" text="Task Name is required" *ngIf="isTaskNameInvalid()"></p-message>
+    </div>
+    <div class="p-field">
+      <label for="taskDescription">Task Description</label>
+      <textarea id="taskDescription" pInputTextarea [(ngModel)]="task.taskDescription" formControlName="TaskDescription" [disabled]="true"></textarea>
+
+      <p-message severity="error" text="Description should be at least 5 characters long" *ngIf="isTaskDescriptionInvalid()"></p-message>
+    </div>
+    <div class="p-field-checkbox">
+      <label for="isComplete">Is Complete</label>
+      <p-checkbox id="isComplete" [binary]="true" label="Is Complete" [(ngModel)]="task.isComplete" formControlName="IsComplete"></p-checkbox>
+    </div>
+    <div class="p-field">
+        <label for="userId">Assigned User</label>
+        <p-dropdown id="userId" [options]="users" [(ngModel)]="task.userId" optionLabel="userName" optionValue="userId" [style]="{'width':'100%'}"></p-dropdown>
+    </div>
+    <div class="p-field">
+      <button id="submit" pButton type="submit" label="Save" class="p-button-success"></button>
+    </div>
+</form>

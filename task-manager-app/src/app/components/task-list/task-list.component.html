@@ -1,0 +1,25 @@
+<p-table [value]="tasks">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Task Name</th>
+        <th>Task Description</th>
+        <th>Is Complete</th>
+        <th>User ID</th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-task>
+      <tr>
+        <td>{{task.taskName}}</td>
+        <td>{{task.taskDescription}}</td>
+        <td>{{task.isComplete}}</td>
+        <td>{{task.userId}}</td>
+        <td>
+            <button pButton type="button" label="Edit" (click)="editTask(task.taskId)" class="p-button-secondary"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  
+  <button pButton type="button" label="Add New Task" (click)="addTask()" class="p-button-success"></button>
+  
